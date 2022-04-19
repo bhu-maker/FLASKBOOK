@@ -73,10 +73,10 @@ def shortingtwo(d1,d2):
    obj=Book1.query.filter(or_(Book1.content>=d1,Book1.content<=d2)).all()
    return render_template("list.html",key=obj)
 
-app.route("/sthree",methods=['GET'])
-def shortingthree():  
-  #obj=Book1.query.filter(Book1.title.like(f"%{pk}%")).all
-  obj=Book1.query.filter(Book1.title.like(f"%ha%")).all
+app.route("/sthree/<str:u>",methods=['GET'])
+def shortingthree(u):  
+  obj=Book1.query.filter(Book1.title.like(f"{u}%")).all()
+  #obj=Book1.query.filter(Book1.title.like(f"ha%")).all()
   #obj=Book1.query.filter_by(title="half")---error
   return render_template("list.html",key=obj)
 
